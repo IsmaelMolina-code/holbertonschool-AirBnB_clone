@@ -12,14 +12,14 @@ class BaseModel:
     def __init__(self):
         """ initializes the class instance """
         self.id = str(uuid.uuid4())
-        self.updated_at = datetime.now()
         self.created_at = datetime.now()
+        self.updated_at = self.created_at
 
     def __str__(self):
         """ returns a string representation of the class
             instance attributes """
-        class_name = self.__class__.__name__
-        return f"[{class_name}] ({self.id}) {self.__dict__}"
+        return "[{}] ({}) {}".format(self.__class__.__name__,
+                                     self.id, self.__dict__)
 
     def save(self):
         """ updates the public instance attribute
