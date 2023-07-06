@@ -11,9 +11,9 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         if kwargs:
+            if key == '__class__':
+                del kwargs[key]
             for key, value in kwargs.items():
-                if key == '__class__':
-                    continue
                 if key == 'created_at' or key == 'updated_at':
                     time_value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                     setattr(self, key, time_value)
