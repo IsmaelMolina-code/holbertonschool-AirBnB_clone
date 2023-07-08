@@ -12,6 +12,7 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         if kwargs:
+            kwargs.pop('__class__', None)
             for key, value in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
                     time_value = datetime.strptime(value,
@@ -43,8 +44,8 @@ class BaseModel:
             instance attributes  """
         new_dict = self.__dict__.copy()
         new_dict["__class__"] = self.__class__.__name__
-        if type(self.created_at) != str:
-            new_dict["created_at"] = self.created_at.isoformat()
-        if type(self.updated_at) != str:
-            new_dict["updated_at"] = self.updated_at.isoformat()
+        if isinstance(self.created_at, datetime):
+            new_dict['created_at'] = self.created_at.isoformat()
+        if isinstance(self.updated_at, datetime):
+            new_dict['updated_at'] = self.updated_at.isoformat()
         return new_dict
