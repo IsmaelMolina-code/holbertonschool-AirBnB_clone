@@ -6,9 +6,12 @@ from models.base_model import BaseModel
 
 
 class TestBaseModel(unittest.TestCase):
-    def test_unique_id(self):
+    def test_id_and_intances(self):
         model1 = BaseModel()
         model2 = BaseModel()
+
+        self.assertIsInstance(model1, BaseModel)
+        self.assertIsInstance(model2, BaseModel)
 
         self.assertIsNotNone(model1.id)
         self.assertIsNotNone(model2.id)
@@ -18,20 +21,24 @@ class TestBaseModel(unittest.TestCase):
 
         self.assertNotEqual(model1.id, model2.id)
 
+    def test_dict(self):
+        obj = BaseModel()
+
+        self.assertIn("id", obj.__dict__)
+        self.assertIn("created_at", obj.__dict__)
+        self.assertIn("updated_at", obj.__dict__)
+
     def test_created_at(self):
         model = BaseModel()
 
         self.assertIsNotNone(model.created_at)
-
         self.assertIsInstance(model.created_at, datetime)
 
     def test_updated_at(self):
         model = BaseModel()
 
         self.assertIsNotNone(model.updated_at)
-
         self.assertIsInstance(model.updated_at, datetime)
-
         self.assertEqual(model.updated_at, model.created_at)
 
     def test_save_updated_at(self):
