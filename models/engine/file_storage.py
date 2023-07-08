@@ -1,23 +1,24 @@
 #!/usr/bin/python3
-"""  """
+""" FileStorage class """
 
 
 from os.path import exists
 import json
+from models.base_model import BaseModel
 
 
 class FileStorage:
-    """  """
+    """ FileStorage class """
 
     __file_path = "file.json"
     __objects = {}
-    
+
     def all(self):
-        """returns the dictionary objects"""
+        """ returns the dictionary objects """
         return self.__objects
-        
+
     def new(self, obj):
-        """sets in objects the obj with key <obj class name>.id"""
+        """ sets in objects the obj with key <obj class name>.id """
 
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
         self.__objects[key] = obj
@@ -27,7 +28,7 @@ class FileStorage:
         """ serializes objects to the JSON file """
         dicts = {}
         for key, value in self.__objects.items():
-            dicts[key] = value.to_dict() 
+            dicts[key] = value.to_dict()
         with open(self.__file_path, 'w') as f:
             json.dump(dicts, f)
 
@@ -37,8 +38,8 @@ class FileStorage:
             with open(self.__file_path, 'r') as f:
                 dicts = json.load(f)
                 for key, value in dicts.items():
-                    self.__objects[key] = eval(value["__class__"])(**value)
-                    self.__objects[key].id = key
-                    self.save()
+                    class_name = key.split(".")[0]
+                    obj = eval(class_name)(**value)
+                    self.__objects[key] = obj
         else:
             return
