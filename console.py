@@ -12,17 +12,17 @@ from models import storage
 
 class HBNBCommand(cmd.Cmd):
     """ Console class """
-    if sys.stdin.isatty():
+    if sys.stdin and sys.stdin.isatty():
         prompt = '(hbnb) '
     else:
         prompt = '(hbnb) \n'
 
     def do_quit(self, arg):
-        """Quit command to exit the program\n"""
+        """Quit command to exit the program"""
         return True
 
     def do_EOF(self, arg):
-        """EOF command to exit the program\n"""
+        """EOF command to exit the program"""
         return True
 
     def emptyline(self):
