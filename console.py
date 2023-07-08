@@ -3,11 +3,19 @@
 
 
 import cmd
+import sys
+
+
+from models.base_model import BaseModel
+from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
     """ Console class """
-    prompt = '(hbnb) '
+    if sys.stdin.isatty():
+        prompt = '(hbnb) '
+    else:
+        prompt = '(hbnb) \n'
 
     def do_quit(self, arg):
         """Quit command to exit the program\n"""
