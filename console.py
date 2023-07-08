@@ -1,13 +1,7 @@
 #!/usr/bin/python3
 """ Command interpreter for the HBNB project """
-
-
 import cmd
 import sys
-
-
-from models.base_model import BaseModel
-from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
