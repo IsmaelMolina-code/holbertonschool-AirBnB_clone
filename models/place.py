@@ -1,8 +1,11 @@
 #!/usr/bin/python3
+"""Defines the class Place that inherit from BaseModel"""
+
+from models.base_model import BaseModel
 
 
-
-class Place:
+class Place(BaseModel):
+    """Create a new empty Place class"""
 
     city_id = ""
     user_id = ""
