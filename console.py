@@ -27,10 +27,7 @@ classes = {
 
 class HBNBCommand(cmd.Cmd):
     """ Console class """
-    if sys.stdin and sys.stdin.isatty():
-        prompt = '(hbnb) '
-    else:
-        prompt = '(hbnb) \n'
+    prompt = '(hbnb) '
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
