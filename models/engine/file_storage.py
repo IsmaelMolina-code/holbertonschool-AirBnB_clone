@@ -42,4 +42,4 @@ class FileStorage:
                     obj = eval(class_name)(**value)
                     self.__objects[key] = obj
         else:
-            return
+            pass
