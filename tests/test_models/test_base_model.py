@@ -21,7 +21,7 @@ class TestBaseModel(unittest.TestCase):
 
         self.assertNotEqual(model1.id, model2.id)
 
-    def test_dict(self):
+    def test_dict_creation(self):
         obj = BaseModel()
 
         self.assertIn("id", obj.__dict__)
@@ -40,6 +40,12 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsNotNone(model.updated_at)
         self.assertIsInstance(model.updated_at, datetime)
         self.assertEqual(model.updated_at, model.created_at)
+
+    def test_str(self):
+        obj = BaseModel()
+        cls = type(obj).__name__
+        string = "[{}] ({}) {}".format(cls, obj.id, obj.__dict__)
+        self.assertEqual(obj.__str__(), string)
 
     def test_save_updated_at(self):
         model = BaseModel()
