@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Console Module """
+""" Command interpreter for the HBNB project """
 
 
 import cmd
@@ -18,6 +18,10 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, arg):
         """ EOF command to exit the program """
         return True
+
+    def emptyline(self):
+        """ Empty line """
+        pass
 
 
 if __name__ == '__main__':
