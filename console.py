@@ -14,13 +14,16 @@ from models.amenity import Amenity
 from models.review import Review
 
 
-classes = { 'BaseModel': BaseModel,
+classes = {
+            'BaseModel': BaseModel,
             'User': User,
             'State': State,
             'City': City,
             'Place': Place,
             'Amenity': Amenity,
-            'Review': Review }
+            'Review': Review
+            }
+
 
 class HBNBCommand(cmd.Cmd):
     """ Console class """
