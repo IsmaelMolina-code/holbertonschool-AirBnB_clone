@@ -7,20 +7,18 @@ import cmd
 
 class HBNBCommand(cmd.Cmd):
     """ Console class """
-    def __init__(self):
-        cmd.Cmd.__init__(self)
-        self.prompt = '(hbnb) '
+    prompt = '(hbnb) '
 
     def do_quit(self, arg):
-        """ Quit command to exit the program """
+        """Quit command to exit the program\n"""
         return True
 
     def do_EOF(self, arg):
-        """ EOF command to exit the program """
+        """EOF command to exit the program\n"""
         return True
 
     def emptyline(self):
-        """ Empty line """
+        """Empty line"""
         pass
 
 
