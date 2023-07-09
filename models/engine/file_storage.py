@@ -5,12 +5,6 @@
 from os.path import exists
 import json
 from models.base_model import BaseModel
-from models.user import User
-from models.state import State
-from models.city import City
-from models.place import Place
-from models.amenity import Amenity
-from models.review import Review
 
 
 class FileStorage:
@@ -41,13 +35,9 @@ class FileStorage:
     def reload(self):
         """ deserializes the JSON file to objects """
         if exists(self.__file_path):
-            try:
-                with open(self.__file_path, 'r') as f:
-                    dicts = json.load(f)
-                    self.__objects = {}
-                    for key, value in dicts.items():
-                        class_name = key.split(".")[0]
-                        obj = eval(class_name)(**value)
-                        self.__objects[key] = obj
-            except FileNotFoundError:
-                pass
+            with open(self.__file_path, 'r') as f:
+                dicts = json.load(f)
+                for key, value in dicts.items():
+                    self.__objects[key] = BaseModel(**value)
+        else:
+            pass
