@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """ Command interpreter for the HBNB project """
 import cmd
-import sys
 
 from models import storage
 
@@ -156,6 +155,7 @@ class HBNBCommand(cmd.Cmd):
         """ Updates the attribute """
         setattr(storage.all()[key], arg_list[2], arg_list[3])
         storage.all()[key].save()
+        storage.save()
 
 
 if __name__ == '__main__':

@@ -44,8 +44,6 @@ class BaseModel:
             instance attributes  """
         new_dict = self.__dict__.copy()
         new_dict["__class__"] = self.__class__.__name__
-        if isinstance(self.created_at, datetime):
-            new_dict['created_at'] = self.created_at.isoformat()
-        if isinstance(self.updated_at, datetime):
-            new_dict['updated_at'] = self.updated_at.isoformat()
+        new_dict['created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        new_dict['updated_at'] = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
         return new_dict
