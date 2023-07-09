@@ -69,6 +69,7 @@ class TestFileStorageClass(unittest.TestCase):
         storage.reload()
         new_dict = storage.all()
         self.assertEqual(old_dict.keys(), new_dict.keys())
+
         obj = BaseModel()
         obj.id = 1
         dict_dict = {"BaseModel.1": obj.to_dict()}
@@ -78,9 +79,8 @@ class TestFileStorageClass(unittest.TestCase):
         with open("file.json", 'w') as f:
             f.write(dumps(dict_dict))
     
-        #storage.reload()
-        #self.assertEqual(storage.all().keys(), obje_dict.keys())
+        storage.reload()
+        self.assertEqual(storage.all().keys(), obje_dict.keys())
     
 if __name__ == '__main__':
     unittest.main()
-    
