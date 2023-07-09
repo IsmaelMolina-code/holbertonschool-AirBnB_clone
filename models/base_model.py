@@ -14,12 +14,11 @@ class BaseModel:
         if kwargs:
             kwargs.pop('__class__', None)
             for key, value in kwargs.items():
-                if key == 'created_at' or key == 'updated_at':
-                    time_value = datetime.strptime(value,
-                                                   "%Y-%m-%dT%H:%M:%S.%f")
-                    setattr(self, key, time_value)
                 if key != "__class__":
                     setattr(self, key, value)
+                if key == 'created_at' or key == 'updated_at':
+                    time_value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    setattr(self, key, time_value)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
@@ -44,6 +43,6 @@ class BaseModel:
             instance attributes  """
         new_dict = self.__dict__.copy()
         new_dict["__class__"] = self.__class__.__name__
-        new_dict['created_at'] = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
-        new_dict['updated_at'] = self.updated_at.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        new_dict['created_at'] = self.created_at.isoformat()
+        new_dict['updated_at'] = self.updated_at.isoformat()
         return new_dict
