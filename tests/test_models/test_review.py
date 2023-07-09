@@ -36,7 +36,7 @@ class TestReviewClass(unittest.TestCase):
         self.assertEqual(review.text, "Great experience!")
 
     def test_to_dict(self):
-        """Test the to_dict() method of Review class"""
+
         review = Review()
         review.place_id = "12345"
         review.user_id = "67890"

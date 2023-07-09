@@ -46,7 +46,7 @@ class TestUserClass(unittest.TestCase):
         self.assertEqual(user.last_name, "Balleste")
 
     def test_to_dict(self):
-        """Test the to_dict() method of User class"""
+
         user = User()
         user.email = "ismael@ex.com"
         user.password = "123456"

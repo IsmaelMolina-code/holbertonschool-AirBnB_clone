@@ -79,7 +79,7 @@ class TestPlaceClass(unittest.TestCase):
         self.assertEqual(place.amenity_ids, [1, 2, 3])
 
     def test_to_dict(self):
-        """Test the to_dict() method of Place class"""
+
         place = Place()
         place.city_id = "12345"
         place.user_id = "67890"

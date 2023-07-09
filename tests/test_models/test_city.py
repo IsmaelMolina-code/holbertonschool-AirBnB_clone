@@ -32,7 +32,7 @@ class TestCityClass(unittest.TestCase):
         self.assertEqual(city.name, "New York")
 
     def test_to_dict(self):
-        """Test the to_dict() method of City class"""
+
         city = City()
         city.state_id = "12345"
         city.name = "New York"
