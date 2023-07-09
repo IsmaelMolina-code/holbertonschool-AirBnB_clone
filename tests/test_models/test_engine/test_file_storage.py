@@ -6,10 +6,14 @@ import os
 import json
 from models import storage
 from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
+
 
 class TestFileStorageClass(unittest.TestCase):
 
     def test_all(self):
+
+        self.assertIsInstance(storage, FileStorage)
 
         obj = BaseModel()
         __objects = storage.all()
@@ -78,9 +82,10 @@ class TestFileStorageClass(unittest.TestCase):
             os.remove("file.json")
         with open("file.json", 'w') as f:
             f.write(dumps(dict_dict))
-    
+
         storage.reload()
         self.assertEqual(storage.all().keys(), obje_dict.keys())
-    
+
+
 if __name__ == '__main__':
     unittest.main()
