@@ -12,6 +12,7 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         if kwargs:
+            kwargs.pop('__class__', None)
             for key, value in kwargs.items():
                 if key == 'created_at' or key == 'updated_at':
                     time_value = datetime.strptime(value,
