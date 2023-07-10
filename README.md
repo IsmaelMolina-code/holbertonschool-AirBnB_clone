@@ -35,11 +35,11 @@ To use the Holberton School AirBnB Clone project, follow these steps:
 
 1. Clone the repository from GitHub:
 
-$ git clone https://github.com/IsmaelMolina-code/holbertonschool-AirBnB_clone.git
+`$ git clone https://github.com/IsmaelMolina-code/holbertonschool-AirBnB_clone.git`
 
 2. Navigate to the project directory:
 
-$ cd holbertonschool-AirBnB_clone
+`$ cd holbertonschool-AirBnB_clone`
 
 3. Run the console by writting: python ./console.py or just ./console.py
 
