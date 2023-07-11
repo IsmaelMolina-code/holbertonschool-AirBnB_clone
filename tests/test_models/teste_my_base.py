@@ -71,15 +71,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(created_at_str, datetime)
         self.assertIsInstance(updated_at_str, datetime)
 
-    """Otros casos de prueba"""
-
-    # def test_load_from_dict(self):
-    #     model_dict = {'id': '123', 'created_at': '2022-01-01T00:00:00.000000', ...}
-    #     model = BaseModel()
-    #     model.load_from_dict(model_dict)
-    #     self.assertEqual(model.id, '123')
-    #     self.assertEqual(model.created_at, datetime(2022, 1, 1, 0, 0, 0))
-
 
 if __name__ == "__main__":
     unittest.main()

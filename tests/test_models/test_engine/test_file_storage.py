@@ -83,9 +83,6 @@ class TestFileStorageClass(unittest.TestCase):
         with open("file.json", 'w') as f:
             f.write(dumps(dict_dict))
 
-        #storage.reload()
-        #self.assertEqual(storage.all().keys(), obje_dict.keys())
-
 
 if __name__ == '__main__':
     unittest.main()

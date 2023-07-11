@@ -12,9 +12,13 @@ class TestAmenityClass(unittest.TestCase):
 
         obj = Amenity()
 
+        """ Verify that the object is an instance of the Amenity class  """
         self.assertIsInstance(obj, Amenity)
+
+        """ Verify that the object is an instance of the BaseModel class   """
         self.assertIsInstance(obj, BaseModel)
 
+        """ Verify that the object has the correct attributes """
         self.assertIn("id", obj.__dict__)
         self.assertIn("created_at", obj.__dict__)
         self.assertIn("updated_at", obj.__dict__)
@@ -25,6 +29,7 @@ class TestAmenityClass(unittest.TestCase):
         amenity = Amenity()
         amenity.name = "Pet allowed"
 
+        """ Verify that the object has the correct attributes """
         self.assertEqual(amenity.name, "Pet allowed")
 
     def test_to_dict(self):
@@ -34,6 +39,7 @@ class TestAmenityClass(unittest.TestCase):
 
         amenity_dict = amenity.to_dict()
 
+        """ Verify that the object has the correct attributes """
         self.assertEqual(amenity_dict["name"], "Pet allowed")
         self.assertIn("id", amenity_dict)
         self.assertIn("created_at", amenity_dict)

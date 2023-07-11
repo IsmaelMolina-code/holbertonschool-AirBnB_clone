@@ -11,7 +11,10 @@ class TestPlaceClass(unittest.TestCase):
     def test_class(self):
         obj = Place()
 
+        """ Verify if obj is an instance of Place """
         self.assertIsInstance(obj, Place)
+
+        """ Verify if obj is an instance of BaseModel  """
         self.assertIsInstance(obj, BaseModel)
 
         self.assertIn("id", obj.__dict__)
@@ -29,6 +32,7 @@ class TestPlaceClass(unittest.TestCase):
         self.assertIn("longitude", Place.__dict__)
         self.assertIn("amenity_ids", Place.__dict__)
 
+        """ Verify if attributes are public """
         self.assertEqual(Place.city_id, "")
         self.assertEqual(Place.user_id, "")
         self.assertEqual(Place.name, "")
@@ -66,6 +70,7 @@ class TestPlaceClass(unittest.TestCase):
         place.longitude = -122.4194
         place.amenity_ids = [1, 2, 3]
 
+        """ Verify if attributes are assigned correctly """
         self.assertEqual(place.city_id, "12345")
         self.assertEqual(place.user_id, "67890")
         self.assertEqual(place.name, "Somewhere")
@@ -95,6 +100,7 @@ class TestPlaceClass(unittest.TestCase):
 
         place_dict = place.to_dict()
 
+        """ Verify if to_dict() returns a dictionary """
         self.assertEqual(place_dict["city_id"], "12345")
         self.assertEqual(place_dict["user_id"], "67890")
         self.assertEqual(place_dict["name"], "Somewhere")

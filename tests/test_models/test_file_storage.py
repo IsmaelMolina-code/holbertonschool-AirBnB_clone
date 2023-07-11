@@ -7,27 +7,32 @@ import json
 from models import storage
 from models.base_model import BaseModel
 
-class TestFileStorageClass(unittest.TestCase):
 
+class TestFileStorageClass(unittest.TestCase):
     def test_all(self):
 
         obj = BaseModel()
         __objects = storage.all()
 
+        """ Verify that __objects is a dictionary """
         self.assertIsInstance(__objects, dict)
 
+        """ Verify that the key is the class name """
         key = "{}.{}".format(type(obj).__name__, obj.id)
         self.assertIn(key, __objects)
 
+        """ Verify that the value is the instance """
         self.assertEqual(obj, __objects[key])
         self.assertIsInstance(__objects[key], BaseModel)
 
     def set_up(self):
+        """ Verify that the file is created """
         self.file_path = "file.json"
         self.storage = FileStorage()
         self.storage.reload()
 
     def tear_down(self):
+        """ Verify that the file is deleted """
         if os.path.exists(self.file_path):
             os.remove(self.file_path)
 
@@ -39,6 +44,8 @@ class TestFileStorageClass(unittest.TestCase):
         new_dict["updated_at"] = "1999-1-4T7:15:05.543210"
         obj2 = BaseModel(**new_dict)
         key = "{}.{}".format(type(obj2).__name__, obj2.id)
+
+        """ Verify that the key is the class name  """
         self.assertNotIn(key, storage.all())
         obj2 = BaseModel()
         key = "{}.{}".format(type(obj2).__name__, obj2.id)
@@ -52,6 +59,8 @@ class TestFileStorageClass(unittest.TestCase):
         if os.path.exists(file):
             os.remove(file)
         storage.save()
+
+        """ Verify that the file is created  """
         self.assertTrue(os.path.exists(file))
         with open(file, 'w') as f:
             f.write("TestingTheProgram")
@@ -59,6 +68,7 @@ class TestFileStorageClass(unittest.TestCase):
             content = f.read()
             storage.save()
             new_content = f.read()
+        """ Verify that the content is different """
         self.assertNotEqual(content, new_content)
 
     def test_reload(self):
@@ -68,6 +78,8 @@ class TestFileStorageClass(unittest.TestCase):
         old_dict = storage.all()
         storage.reload()
         new_dict = storage.all()
+
+        """ Verify that the dictionaries are the same """
         self.assertEqual(old_dict.keys(), new_dict.keys())
         obj = BaseModel()
         obj.id = 1
@@ -77,9 +89,7 @@ class TestFileStorageClass(unittest.TestCase):
             os.remove("file.json")
         with open("file.json", 'w') as f:
             f.write(dumps(dict_dict))
-    
-        #storage.reload()
-        #self.assertEqual(storage.all().keys(), obje_dict.keys())
-    
+
+
 if __name__ == '__main__':
     unittest.main()

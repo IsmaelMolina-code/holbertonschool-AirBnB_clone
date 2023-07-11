@@ -12,9 +12,11 @@ class TestUserClass(unittest.TestCase):
 
         obj = User()
 
+        """ Verify if obj is an instance of User and BaseModel """
         self.assertIsInstance(obj, User)
         self.assertIsInstance(obj, BaseModel)
 
+        """ Verify if obj has attributes """
         self.assertIn("id", obj.__dict__)
         self.assertIn("created_at", obj.__dict__)
         self.assertIn("updated_at", obj.__dict__)
@@ -23,6 +25,7 @@ class TestUserClass(unittest.TestCase):
         self.assertIn("first_name", User.__dict__)
         self.assertIn("last_name", User.__dict__)
 
+        """ Verify if obj has attributes """
         self.assertEqual(User.email, "")
         self.assertEqual(User.password, "")
         self.assertEqual(User.first_name, "")
@@ -40,6 +43,7 @@ class TestUserClass(unittest.TestCase):
         user.first_name = "Laura"
         user.last_name = "Balleste"
 
+        """ Verify if obj has attributes """
         self.assertEqual(user.email, "laura@ex.com")
         self.assertEqual(user.password, "123456")
         self.assertEqual(user.first_name, "Laura")
@@ -55,6 +59,7 @@ class TestUserClass(unittest.TestCase):
 
         user_dict = user.to_dict()
 
+        """ Verify if obj has attributes and their values """
         self.assertEqual(user_dict["email"], "ismael@ex.com")
         self.assertEqual(user_dict["password"], "123456")
         self.assertEqual(user_dict["first_name"], "Ismael")

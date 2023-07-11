@@ -1,6 +1,6 @@
 <h1 align="center"> Airbnb Clone Project </h1>
 
-<img src="./65f4a1dd9c51265f49d0.png">
+<img src="./images/65f4a1dd9c51265f49d0.png">
 
 ## About it
 

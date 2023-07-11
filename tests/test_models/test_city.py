@@ -11,15 +11,20 @@ class TestCityClass(unittest.TestCase):
     def test_class(self):
         obj = City()
 
+        """ Verify that obj is an instance of City and BaseModel """
         self.assertIsInstance(obj, City)
+
+        """ Verify that obj is an instance of BaseModel  """
         self.assertIsInstance(obj, BaseModel)
 
+        """ Verify that obj has the correct attributes """
         self.assertIn("id", obj.__dict__)
         self.assertIn("created_at", obj.__dict__)
         self.assertIn("updated_at", obj.__dict__)
         self.assertIn("state_id", City.__dict__)
         self.assertIn("name", City.__dict__)
 
+        """ Verify that obj has the correct attributes """
         self.assertEqual(City.state_id, "")
         self.assertEqual(City.name, "")
 
@@ -28,6 +33,7 @@ class TestCityClass(unittest.TestCase):
         city.state_id = "12345"
         city.name = "New York"
 
+        """ Verify that obj has the correct attributes """
         self.assertEqual(city.state_id, "12345")
         self.assertEqual(city.name, "New York")
 
@@ -39,6 +45,7 @@ class TestCityClass(unittest.TestCase):
 
         city_dict = city.to_dict()
 
+        """ Verify that obj has the correct attributes """
         self.assertEqual(city_dict["state_id"], "12345")
         self.assertEqual(city_dict["name"], "New York")
         self.assertEqual(city_dict["__class__"], "City")
