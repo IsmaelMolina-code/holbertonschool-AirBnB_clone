@@ -96,7 +96,7 @@ $ python3 unittest -m tests/test_console.py
 
 
 ### Questions, Comments, Sugestions
-If you have questions or suggestions, contact [AUTHORS]("https://github.com/IsmaelMolina-code/holbertonschool-AirBnB_clone/blob/main/AUTHORS")
+If you have questions or suggestions, contact [AUTHORS](https://github.com/IsmaelMolina-code/holbertonschool-AirBnB_clone/blob/main/AUTHORS)
 
 
 ### License
