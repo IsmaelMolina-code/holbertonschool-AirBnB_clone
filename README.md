@@ -2,6 +2,7 @@
 
 <img src="./images/65f4a1dd9c51265f49d0.png">
 
+
 ## About it
 
 This is an AirBnB clone project developed as part of the Holberton School curriculum. It aims to replicate the core functionality of the AirBnB website and provide a command-line interface to interact with the application.
@@ -57,6 +58,47 @@ To use the Command Interpreter, follow these steps:
 5. Repeat the process to perform other operations or use the available commands.
 
 
-## License
+### Non-Interactive Mode
+
+The console can also be used in non-interactive mode:
+
+```
+$ echo "create User" | ./console.py
+
+$ echo "help" | ./console.py
+```
+
+
+## Available classes
+
+|Class name| Attributes|
+|--|--|
+| BaseModel | `id`, `created_at`, `updated_at`  |
+| User| `email`, `password`, `first_name`, `last_name` |
+| State| `name` `state_id`|
+| City| `name`  |
+| Amenity | `name` |
+| Place | `city_id` `user_id` `name` `description` `number_rooms` `number_bathrooms` `max_guest` `price_by_night` `latitude``longitude` `amenity_ids` |
+| Review| `place_id` `user_id` `text` |
+
+
+## Testing 
+
+If you want to personalize the classes and execute unit tests to confirm that your changes haven't modify the functionality use:
+
+```
+python3 -m unittest discover tests
+```
+Alternatively, you can specify a single test file to run at a time:
+```
+$ python3 unittest -m tests/test_console.py
+```
+
+
+### Questions, Comments, Sugestions
+If you have questions or suggestions, contact [AUTHORS]("https://github.com/IsmaelMolina-code/holbertonschool-AirBnB_clone/blob/main/AUTHORS")
+
+
+### License
 
 [Free usage](https://github.com/IsmaelMolina-code/holbertonschool-AirBnB_clone)
